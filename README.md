@@ -116,14 +116,12 @@ For dependency details, see `Final/README_global_berkeley_plots.md`.
 
 - `preprocess_data.py` — Berkeley Earth daily → preprocessed region files
 - `reproduce_6.3.3.ipynb` — DOE 6.3.3 (records)
-- `create_gridded_ushcn.py` — Optional USHCN→grid mapping used for comparisons
 - `analyze_station_coverage.py` — Station coverage utilities
 - `reproduce_6_3_5.py` — DOE 6.3.5 (≥95°F days; CONUS)
 - `reproduce_6_3_6.py` — DOE 6.3.6 (heatwave days; US/NH)
 - `berkeley_earth_plot.py` — Global JJA maps and differences (Figures 3 & 4 equivalents)
 - `README_6.3.3.md`, `README_6.3.5.md`, `README_6.3.6.md` — Methodology and notes
 - `README_processed_data.md` — Processed data documentation
-- `README_DOE_reproduction.md`, `README_gridded_ushcn.md` — USHCN/JRC dataset notes
 - `requirements_global_berkeley.txt` — optional dependency list for global maps
 
 
