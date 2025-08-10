@@ -1,6 +1,6 @@
 ## DOE Section 6.3 Reproduction: Final Runbook
 
-This folder centralizes the Python code needed to reproduce the figures referenced in `Final/description.txt`:
+This folder centralizes the Python code needed to reproduce the figures our critique of the DOE CWG report section 6.3
 
 - Figure 6.3.3: All‑time daily record Highs (warm season) and record Lows (cold season)
 - Figure 6.3.5: Days ≥ 95°F (CONUS; bars by 6‑year periods)
