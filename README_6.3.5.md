@@ -48,8 +48,3 @@ Options:
 - US (default): `Figure6.3.5/Figure6.3.5_us_multi.png`
 - NH (with `--region nh`): `Figure6.3.5/Figure6.3.5_nh_multi.png`
 
-### Next steps
-- Add a runnable script `Figure6.3.5/reproduce_6_3_5.py` implementing the v1 outline above,
-- Then implement the region masking and plotting per the Future work section.
-
-

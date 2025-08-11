@@ -18,18 +18,6 @@ This analysis reproduces the figure showing the 15‑year trailing average of th
 - **Aggregation**: For each calendar year, count heatwave days per grid cell and then average across all land grid cells in the region (unweighted) to produce a per‑station average.
 - **Smoothing**: Compute a 15‑year trailing (right‑aligned) average of the annual per‑station series.
 
-### Implementation Notes
-The script `Figure6.3.6/reproduce_6_3_6.py` implements the workflow using `xarray`/`pandas` with dask‑friendly chunking.
-
-High‑level steps:
-1) Load NetCDF and mask to land grid cells.
-2) Build region masks (−105°W split for US; all‑land for NH).
-3) Select May–September.
-4) Compute daily 90th‑percentile thresholds by grouping over `time.dayofyear`.
-5) Identify heatwave days using a vectorized rolling window of size `min_run`; the entire window is marked as heatwave days when all days exceed the threshold. Time is rechunked to avoid dask rolling limits.
-6) Aggregate annually to per‑station regional averages.
-7) Compute 15‑year trailing means and plot.
-
 ### Command‑line Usage
 Run from the project root.
 
@@ -89,22 +77,6 @@ python Figure6.3.6/reproduce_6_3_6.py --quick --quick-years 1990-1999 --quick-st
   - `NH` mode: `NH` (all land cells in 24–50°N, all longitudes)
 - **Aggregation**: For each calendar year, count heatwave days per grid cell and average across land cells in the region (unweighted) → “per‑station” average.
 - **Smoothing**: Compute a 15‑year trailing (right‑aligned) average of the annual per‑station series.
-
-### Implementation Steps
-1) Load and mask land: open the NetCDF with chunking; apply `land_mask > 0` and treat each land grid cell as a station.
-2) Define regional masks: −105° meridian split for US; all‑land mask for NH.
-3) Filter season: select May–September.
-4) Compute thresholds: group by `time.dayofyear` and compute per‑cell 90th percentiles over the full period. (Leap day is outside May–Sep.)
-5) Identify heatwave days: compute exceedance mask and use a rolling window of size `min_run` over time; any window with all `True` marks all days in that window as heatwave days (vectorized with xarray; rechunking ensures rolling works with dask).
-6) Annual aggregation: sum heatwave days per year per cell; average across cells within each region to get per‑station values.
-7) Smoothing and plotting: compute 15‑year trailing means and create publication‑style figures. Outputs are saved as `Figure6.3.6/Figure6.3.6_us.png` (US) or `Figure6.3.6/Figure6.3.6_nh.png` (NH).
-
-### QA/Validation Checks
-- Sanity: Annual per‑station counts are non‑negative and generally a few days per year on average, with larger values in extreme years.
-- Seasonal bounds: Only May–Sep included.
-- Thresholds: Verify 90th‑percentile computation is by calendar day and based on the full record.
-- Regional masks: Confirm counts of land cells per region and that the boundary at −105° splits the domain as expected.
-- Trailing window: Confirm it is trailing (not centered) and uses at least 1 year at the beginning.
 
 ### Performance Notes
 - Uses `xarray`/`pandas` with dask-friendly chunking.
