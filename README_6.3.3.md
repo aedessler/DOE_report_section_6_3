@@ -16,25 +16,6 @@ This folder contains scripts to reproduce DOE Figure 6.3.3, which shows the numb
 - Creates combined visualization matching DOE Figure 6.3.3
 - Provides detailed statistics about temperature records
 
-#### `create_gridded_ushcn.py`
-**Purpose**: Replace gridded temperature data with nearest USHCN station data.
-
-**What it does**:
-- Loads preprocessed gridded TMAX and TMIN data from Berkeley Earth
-- Loads USHCN station temperature dataset
-- Filters USHCN stations to only include those with data extending to 2024 or later
-- For each grid point, finds the nearest USHCN station
-- Replaces grid point time series with data from the nearest USHCN station
-- Outputs new datasets with USHCN station data mapped to the original grid
-
-#### `analyze_station_coverage.py`
-**Purpose**: Analyze and visualize the coverage of temperature stations.
-
-**What it does**:
-- Processes station data to assess coverage over time
-- Creates visualizations of station density and distribution
-- Outputs analysis in `station_coverage_analysis.png`
-
 ### Input Data
 
 Required data files in parent directories:
@@ -111,32 +92,3 @@ The analysis provides:
 3. 1932: 3.12 records per station
 4. 1917: 2.97 records per station
 5. 1983: 2.63 records per station
-
-## Troubleshooting
-
-### Common Issues
-- **Memory errors**: Datasets are large (~730 MB each)
-- **Missing data files**: Check paths in parent directories
-- **Invalid seasons**: Verify date ranges in masks
-- **NaN values**: Check valid data requirements
-
-### Best Practices
-- Run cells in order in notebook
-- Monitor memory usage
-- Verify season definitions
-- Check data quality before processing
-
-## Dependencies
-
-- **numpy**: Array operations
-- **xarray**: NetCDF handling
-- **matplotlib**: Plotting
-- **pandas**: Time series processing
-- **jupyter**: Notebook interface
-- **scipy**: (Optional) For USHCN processing
-
-## Data Sources
-
-- **Berkeley Earth**: Primary temperature data
-- **USHCN**: Optional comparison data
-- **DOE**: Reference methodology
