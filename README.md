@@ -7,7 +7,7 @@ This folder centralizes the Python code needed to reproduce the figures our crit
 - Figure 6.3.6: Heatwave days (≥6‑day runs of daily 90th‑percentile exceedances)
 - Global context maps (Figures 3 & 4 equivalent): JJA averages and differences using Berkeley Earth
 
-### Data needed (not moved)
+### Data needed
 
 - Berkeley Earth daily NetCDFs in `Berkeley data/`:
   - `Complete_TMAX_Daily_LatLong1_{1900..2020}.nc`
@@ -51,7 +51,7 @@ This populates `processed_data/` with the files listed above. See `Final/README_
 
 ---
 
-## Step 2 — Figure 6.3.3 (records; US and optional NH)
+## Step 2 — Figure 6.3.3 (records; US and NH)
 
 Inputs: preprocessed files from Step 1. The notebook allows choosing US `TMAX`/`TMIN` or NH `TMAX` data.
 
@@ -65,15 +65,19 @@ Additional context is in `Final/README_6.3.3.md`.
 
 ---
 
-## Step 3 — Figure 6.3.5 (days ≥ 95°F; CONUS)
+## Step 3 — Figure 6.3.5 (days ≥ 95°F; US and NH)
 
-Uses `processed_data/preprocessed_us_TMAX_data.nc`.
+Uses `processed_data/preprocessed_us_TMAX_data.nc` (US) or `processed_data/preprocessed_nh_TMAX_data.nc` (NH; from optional Step 1).
 
 ```bash
+# US (CONUS)
 python Final/reproduce_6_3_5.py
+
+# NH mid‑latitudes (24–50°N)
+python Final/reproduce_6_3_5.py --region nh
 ```
 
-Output: `Figure6.3.5/Figure6.3.5_us.png`. See `Final/README_6.3.5.md` for details.
+Outputs: `Figure6.3.5/Figure6.3.5_us_multi.png`, `Figure6.3.5/Figure6.3.5_nh_multi.png`. See `Final/README_6.3.5.md` for details.
 
 ---
 
