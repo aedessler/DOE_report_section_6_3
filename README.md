@@ -1,4 +1,4 @@
-## DOE Section 6.3 Reproduction: Final Runbook
+## DOE Section 6.3 Reproduction
 
 This folder centralizes the Python code needed to reproduce the figures our critique of the DOE CWG report section 6.3
 
@@ -126,6 +126,6 @@ For dependency details, see `Final/README_global_berkeley_plots.md`.
 - `berkeley_earth_plot.py` — Global JJA maps and differences (Figures 3 & 4 equivalents)
 - `README_6.3.3.md`, `README_6.3.5.md`, `README_6.3.6.md` — Methodology and notes
 - `README_processed_data.md` — Processed data documentation
-- `requirements_global_berkeley.txt` — optional dependency list for global maps
+ 
 
 
